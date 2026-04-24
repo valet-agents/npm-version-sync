@@ -37,10 +37,6 @@ connectors:
     description: >-
       Reads package.json from watched repos and, during cold-start
       discovery, lists your repos to propose packages to monitor.
-      Installed under the name `gh` so the wrapper at
-      /var/lib/valet/bin/gh matches the CLI command the agent
-      types (the default name `github-cli` would leave `gh`
-      resolving to the unauthenticated /usr/bin/gh).
     ui:
       headline: "Let the Watchdog read your package.json."
       blurb: >-
