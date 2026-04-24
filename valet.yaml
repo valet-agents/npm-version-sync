@@ -33,8 +33,7 @@ story:
       catalog: slack
 
 connectors:
-  - catalog: github-cli
-    as: gh
+  - catalog: gh
     description: >-
       Reads package.json from watched repos and, during cold-start
       discovery, lists your repos to propose packages to monitor.
