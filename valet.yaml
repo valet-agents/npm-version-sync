@@ -1,0 +1,61 @@
+name: version-sync
+display_name: Version Sync Watchdog
+description: >-
+  Checks daily that the version in each watched repo's package.json
+  matches what's published on npm, and alerts Slack when they drift.
+category: developer-tools
+
+story:
+  hero: "Version Sync Watchdog catches the day you forgot to npm publish."
+  subheadline: >-
+    Every morning, Version Sync Watchdog compares your repo's
+    package.json to the live npm registry. Posts a Slack alert the
+    moment they drift — silent otherwise.
+  steps:
+    - role: trigger
+      title: "Someone forgot to run npm publish."
+      body: >-
+        Or the CI publish step failed silently. Either way, your
+        repo says v1.2.3 but npm still serves v1.2.2.
+    - role: action
+      title: "The Watchdog reads both sides."
+      body: >-
+        Pulls package.json from your repo. Queries the npm registry.
+        Compares dist-tags and checks versions[] to skip false
+        alarms.
+      catalog: github-cli
+    - role: outcome
+      title: "Slack ping — the moment they drift."
+      body: >-
+        Posts a grouped alert to your configured channel with both
+        versions and direct links. Stays silent when everything's in
+        sync.
+      catalog: slack
+
+connectors:
+  - catalog: gh
+    description: >-
+      Reads package.json from watched repos and, during cold-start
+      discovery, lists your repos to propose packages to monitor.
+    ui:
+      headline: "Let the Watchdog read your package.json."
+      blurb: >-
+        Uses gh to pull package.json from each repo you watch. On
+        first run, it lists your repos to propose a starter config.
+      done_note: "Authed as your GitHub user"
+
+channels:
+  - catalog: slack
+    description: >-
+      Posts drift alerts and the cold-start discovery proposal to
+      Slack using the agent's dedicated bot identity.
+    ui:
+      headline: "Give the Watchdog a Slack bot."
+      blurb: >-
+        The agent gets its own Slack bot identity. Invite it to the
+        channel where you want drift alerts.
+      done_note: "Bot ready — invite it to #releases"
+
+  - type: cron
+    schedule: every day at 9am
+    timezone: America/Los_Angeles
