@@ -23,7 +23,7 @@ story:
         Pulls package.json from your repo. Queries the npm registry.
         Compares dist-tags and checks versions[] to skip false
         alarms.
-      catalog: github-cli
+      catalog: gh
     - role: outcome
       title: "Slack ping — the moment they drift."
       body: >-
