@@ -52,8 +52,7 @@ channels:
     ui:
       headline: "Give the Watchdog a Slack bot."
       blurb: >-
-        The agent gets its own Slack bot identity. Invite it to the
-        channel where you want drift alerts.
+        The agent gets its own Slack bot identity you can @ mention, DM, and invite to channels.
       done_note: "Bot ready — invite it to #releases"
 
   - type: cron
