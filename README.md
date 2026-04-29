@@ -16,8 +16,8 @@ moment they drift — silent otherwise.
   <tr>
     <td colspan="2" align="center">
       <br />
-      <a href="https://dashboard.valet.dev/setup/configure?from=github.com/valet-agents/version-sync">
-        <img src="https://raw.githubusercontent.com/valet-agents/version-sync/main/.github/deploy-button.svg" alt="Deploy Agent →" height="40" />
+      <a href="https://dashboard.valet.dev/setup/configure?from=github.com/valet-agents/npm-version-sync">
+        <img src="https://raw.githubusercontent.com/valet-agents/npm-version-sync/main/.github/deploy-button.svg" alt="Deploy Agent →" height="40" />
       </a>
       <br /><br />
     </td>
